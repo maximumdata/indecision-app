@@ -23,6 +23,13 @@ var removeOptions = function removeOptions() {
     render();
 };
 
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    var option = app.options[randomNum];
+    if (option) {
+        alert(option);
+    }
+};
 var render = function render() {
     var template = React.createElement(
         'div',
@@ -33,7 +40,7 @@ var render = function render() {
             app.title
         ),
         app.subtitle && React.createElement(
-            'p',
+            'small',
             null,
             app.subtitle
         ),
@@ -43,9 +50,9 @@ var render = function render() {
             app.options.length > 0 ? 'Here are your options' : 'No options'
         ),
         React.createElement(
-            'p',
-            null,
-            app.options.length
+            'button',
+            { disabled: !app.options.length, onClick: onMakeDecision },
+            'What Should I Do?'
         ),
         React.createElement(
             'button',
@@ -55,16 +62,13 @@ var render = function render() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item one'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item two'
-            )
+            app.options.map(function (opt, index) {
+                return React.createElement(
+                    'li',
+                    { key: index },
+                    opt
+                );
+            })
         ),
         React.createElement(
             'form',
