@@ -9,7 +9,8 @@
         "babel-preset-react": "6.24.1"
     },
     "scripts": {
-        "start": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+        "start": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
+        "counter": "babel src/playground/counter.js --out-file=public/scripts/app.js --presets=env,react --watch"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0"
